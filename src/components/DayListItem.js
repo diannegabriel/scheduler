@@ -6,11 +6,11 @@ import "components/DayListItem.scss";
 export default function DayListItem(props) {
   const formatSpots = (spots) => {
     if (spots === 0) {
-      return "0 spots left"
+      return "no spots remaining"
     } else if (spots === 1) {
-      return spots + " spot left"
+      return spots + " spot remaining"
     } else {
-      return spots + " spots left"
+      return spots + " spots remaining"
     }
   }
 
