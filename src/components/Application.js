@@ -48,7 +48,27 @@ export default function Application(props) {
           avatar: "https://i.imgur.com/LpaY82x.png",
         }
       }
-    }
+    },
+    {
+      id: 3,
+      time: "2pm",
+    },
+    {
+      id: 4,
+      time: "3pm",
+      interview: {
+        student: "Dianne",
+        interviewer: {
+          id: 1,
+          name: "Sven Jones", 
+          avatar: "https://i.imgur.com/twYrpay.jpg"
+        }
+      }
+    },
+    {
+      id: 5,
+      time: "4pm",
+    },
   ];
 
   const [day, setDay] = useState("Monday");
