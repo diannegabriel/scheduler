@@ -16,6 +16,7 @@ import Empty from "components/Appointment/Empty.js"
 import Show from "components/Appointment/Show.js"
 import Confirm from "components/Appointment/Confirm.js"
 import Status from "components/Appointment/Status.js"
+import Error from "components/Appointment/Error.js"
 
 storiesOf("Button", module)
   .addParameters({
@@ -142,12 +143,10 @@ storiesOf("Appointment", module)
   .add("Header", () => <Header time="12pm" />)
   .add("Empty", () => <Empty onAdd={action("onAdd")}/>) 
   .add("Show", () => {
-    return (
-      <Show
+    return <Show
         onEdit={action("onEdit")}
         onDelete={action("onDelete")}
       />
-    )
   })
   .add("Confirm", () => {
     return <Confirm
@@ -157,3 +156,10 @@ storiesOf("Appointment", module)
     />
   })
   .add("Status", () => <Status message="Deleting" />)
+  .add("Error", () => {
+    return <Error 
+      message="Could not delete appointment" 
+      onClose={action("onClose")}
+      />
+  })
+    
