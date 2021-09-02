@@ -53,23 +53,8 @@ const appointments = [
 ];
 
 export default function Application(props) {
-  const days = [
-    {
-      id: 1,
-      name: "Monday",
-      spots: 2,
-    },
-    {
-      id: 2,
-      name: "Tuesday",
-      spots: 5,
-    },
-    {
-      id: 3,
-      name: "Wednesday",
-      spots: 0,
-    },
-  ];
+  const [days, setDays] = useState([]);
+  const [day, setDay] = useState("Monday");
 
   // const interviewers = [
   //   { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
@@ -79,7 +64,6 @@ export default function Application(props) {
   //   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
   // ];
 
-  const [day, setDay] = useState("Monday");
   return (
     <main className="layout">
       <section className="sidebar">
