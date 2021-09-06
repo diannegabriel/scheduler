@@ -3,6 +3,7 @@ import axios from "axios";
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
+import useApplicationData from "hooks/useApplicationData";
 import "components/Appointment"
 import "components/Application.scss";
 
@@ -62,6 +63,14 @@ export default function Application(props) {
   // const deleteInterview = () => {
   //   return null;
   // }
+
+  const {
+    state,
+    setDay,
+    bookInterview,
+    cancelInterview,
+    deleteInterview
+  } = useApplicationData();
 
   const appointments = getAppointmentsForDay(state, state.day)
   const schedule = appointments.map((appointment) => {
