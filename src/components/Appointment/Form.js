@@ -4,7 +4,7 @@ import Button from "../Button";
 
 export default function Form(props) {
   const [name, setName] = useState(props.name || "")
-  const [interviewer, setInterviewer] = useState([props.interviewer || null])
+  const [interviewer, setInterviewer] = useState(props.interviewer || null)
 
   const reset = () => {
     setName("");
@@ -34,7 +34,6 @@ export default function Form(props) {
       </form>
       <InterviewerList 
         interviewers={props.interviewers} 
-        value={interviewer} 
         interviewer={interviewer}
         setInterviewer={setInterviewer} 
       />
