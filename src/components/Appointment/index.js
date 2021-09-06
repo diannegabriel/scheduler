@@ -22,7 +22,7 @@ export default function Appointment(props) {
     transition(SHOW);
   }
   return (
-    <article className="appointment">
+    <article>
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
