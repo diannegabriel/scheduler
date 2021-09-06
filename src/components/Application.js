@@ -14,6 +14,8 @@ export default function Application(props) {
     interviewers: []
   });
 
+  const setDay = day => setState({...state, day}) 
+
   useEffect(() => {
     Promise.all([
 			axios.get("/api/days"),
@@ -79,8 +81,6 @@ export default function Application(props) {
       />
     );
   });
-
-  const setDay = day => setState({...state, day}) 
 
   return (
     <main className="layout">
