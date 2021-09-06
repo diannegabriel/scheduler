@@ -9,6 +9,8 @@ export default function useApplicationData() {
     interviewers: []
   });
 
+  console.log(state.day)
+
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -18,6 +20,17 @@ export default function useApplicationData() {
       setState(prev => ({days: all[0].data, appointments: all[1].data, interviewers: all[2].data}))
     });
   }, [])
+
+  const dayFinder = day => {
+    const dayID = {
+      Monday: 0,
+      Tuesday: 1,
+      Wednesday: 2,
+      Thursday: 3,
+      Friday: 4
+    }
+    return dayID[day]
+  }
 
   return {
     state,
