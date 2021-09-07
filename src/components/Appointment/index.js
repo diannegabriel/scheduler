@@ -24,15 +24,9 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  const save = (name, interviewer) => {
-    const interview = {
-      student: name,
-      interviewer
-    };
-    transition(SAVE);
-    props.bookInterview(props.id, interview)
-      .then(() => transition(SHOW))
-      .catch(() => transition(ERROR_SAVE, true))
+  const confirm = () => {
+    transition(CONFIRM);
+    props.deleteInterview();
   }
 
   const deletes = () => {
@@ -42,11 +36,17 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_DELETE, true))
   }
 
-  const confirm = () => {
-    transition(CONFIRM);
-    props.deleteInterview();
+  const save = (name, interviewer) => {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    transition(SAVE)
+    props.bookInterview(props.id, interview)
+      .then(() => transition(SHOW))
+      .catch(() => transition(ERROR_SAVE, true))
   }
-
+  
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -80,8 +80,8 @@ export default function Appointment(props) {
       {mode === SAVE && <Status message="Saving" />}
       {mode === SHOW && (
         <Show
-          student={props.interview.student}
-          interviewer={props.interview.interviewer}
+          student={props.interview && props.interview.student}
+          interviewer={props.interview && props.interview.interviewer}
           onEdit={() => transition(EDIT)}
           onDelete={() => transition(CONFIRM)}
         />
