@@ -65,8 +65,14 @@ export default function useApplicationData() {
   };
   const findDay = getDay(state.day);
   const updateSpots = (appointments) => {
-    const currentDay = state.days.find((dayObject) => dayObject.name === state.day);
-    const spots = 5 - currentDay.appointments.filter((appointment) => appointments[appointment].interview).length;
+    const currentDay = state.days.find(
+      (dayObject) => dayObject.name === state.day
+    );
+    const spots =
+      5 -
+      currentDay.appointments.filter(
+        (appointment) => appointments[appointment].interview
+      ).length;
     const days = [...state.days];
     days[findDay] = { ...days[findDay], spots };
     setState((prev) => ({ ...prev, days }));
