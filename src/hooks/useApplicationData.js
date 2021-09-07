@@ -45,11 +45,43 @@ export default function useApplicationData() {
         ...state.appointments,
         [id]: appointment
       }
+      const dayOfWeek = dayFinder(state.day)
+      let day = {
+        ...state.days[dayOfWeek],
+        spots: state.days[dayOfWeek]
+      }
+      // state.appointments[id].interview ? (
+      //   day = {
+      //     ...state.days[dayOfWeek],
+      //     spots: state.days[dayOfWeek.spots] - 1
+      //   }
+      // ) : (
+      //   day = {
+      //     ...state.days[dayOfWeek],
+      //     spots: state.days[dayOfWeek.spots] - 1
+      //   }
+      // )
+      if (!state.appointments[id].interview) {
+        day = {
+          ...state.days[dayOfWeek],
+          spots: state.days[dayOfWeek].spots - 1
+        }
+      } else {
+        day = {
+          ...state.days[dayOfWeek],
+          spots: state.days[dayOfWeek.spots]
+        }
+      }
+
+      let days = state.days
+      days[dayOfWeek] = day;
+
       return axios.put(`/api/appointments/${id}`, appointment)
         .then(() => {
           setState({
             ...state,
-            appointments
+            appointments,
+            days
           })
         })
     },
@@ -62,8 +94,21 @@ export default function useApplicationData() {
         ...state.appointments,
         [id]: appointment
       };
-      return axios.delete(`/api/appointments/${id}`).then(response => {
-        setState({ ...state, appointments });
+      const dayOfWeek = dayFinder(state.day)
+
+      const day = {
+        ...state.days[dayOfWeek],
+        spots: state.days[dayOfWeek].spots + 1
+      }
+
+      let days = state.days
+      days[dayOfWeek] = day;
+      return axios.delete(`/api/appointments/${id}`).then(() => {
+        setState({ 
+          ...state, 
+          appointments, 
+          days
+        });
       });
     },
     deleteInterview: () => {
