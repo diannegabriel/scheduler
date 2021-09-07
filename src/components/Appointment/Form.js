@@ -15,9 +15,6 @@ export default function Form(props) {
     setName("");
     setInterviewer(null);
   }
-  // const save = () => {
-  //   props.onSave(name, interviewer);
-  // }
   const validate = () => {
     if (name === "") {
       setError("Must enter a name");

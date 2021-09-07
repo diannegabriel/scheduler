@@ -9,10 +9,7 @@ export default function useApplicationData() {
     appointments: {},
     interviewers: []
   });
-
   const setDay = day => setState({...state, day}) 
-  const findDay = getDay(state.day)
-
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -23,8 +20,6 @@ export default function useApplicationData() {
     });
   }, [])
 
-  
-
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -34,31 +29,13 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     }
-    let day = {
-      ...state.days[findDay],
-      spots: state.days[findDay]
-    }
-    !state.appointments[id].interview ? (
-      day = {
-        ...state.days[findDay],
-        spots: state.days[findDay].spots - 1
-      }
-    ) : (
-      day = {
-        ...state.days[findDay],
-        spots: state.days[findDay].spots
-      }
-    )
-    let days = state.days
-    days[findDay] = day;
     return axios.put(`/api/appointments/${id}`, appointment)
-      .then(res => {
+      .then(() => {
         setState({
           ...state,
           appointments,
-          days
         })
-        return res
+        updateSpots(id, appointments);
       })
   }
   
@@ -71,25 +48,27 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-    const day = {
-      ...state.days[findDay],
-      spots: state.days[findDay].spots + 1
-    }
-    let days = state.days
-    days[findDay] = day;
-    return axios.delete(`/api/appointments/${id}`).then(() => {
-      setState({ 
-        ...state, 
-        appointments, 
-        days
+    return axios.delete(`/api/appointments/${id}`)
+      .then(() => {
+        setState({ 
+          ...state, 
+          appointments, 
+        });
+        updateSpots(id, appointments);
       });
-    });
   }
   
   const deleteInterview = () => {
     return null;
   } 
-
+  const findDay = getDay(state.day)
+  const updateSpots = (id, appointments) => {
+    const appointment = state.days.filter((day) => day.appointments.includes(id))[0].appointments;
+    const spots = (5 - appointment.filter((appointment) => appointments[appointment].interview).length);
+    const days = [...state.days];
+    days[findDay] = {...days[findDay], spots};
+    setState(prev => ({ ...prev, days: [...days]}));
+  }
   return {
     state,
     setDay,
