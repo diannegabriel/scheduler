@@ -4,6 +4,7 @@ describe("Navigation", () => {
   });
 
   it("should navigate to Tuesday", () => {
+    // cy.contains("[data-testid=day]", "Tuesday")
     cy.contains(".day-list__item", "Tuesday")
     .click()
     .should("have.class", "day-list__item--selected")
