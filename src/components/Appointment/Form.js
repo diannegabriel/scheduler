@@ -15,15 +15,18 @@ export default function Form(props) {
     setName("");
     setInterviewer(null);
   };
+  // const save = () => {
+  //   props.onSave(name, interviewer);
+  // }
   const validate = () => {
     if (name === "") {
-      setError("Must enter a name");
+      setError("Student name cannot be blank");
       return;
     }
-    if (interviewer === null) {
-      setError("Must select an interviewer");
-      return;
-    }
+    // if (interviewer === null) {
+    //   setError("Must select an interviewer");
+    //   return;
+    // }
     setError("");
     props.onSave(name, interviewer);
   };
