@@ -17,7 +17,7 @@ export default function useApplicationData() {
       axios.get("/api/appointments"),
       axios.get("/api/interviewers")
     ]).then(all => {
-      setState(prev => ({days: all[0].data, appointments: all[1].data, interviewers: all[2].data}))
+      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data}))
     });
   }, [])
 
@@ -50,39 +50,29 @@ export default function useApplicationData() {
         ...state.days[dayOfWeek],
         spots: state.days[dayOfWeek]
       }
-      // state.appointments[id].interview ? (
-      //   day = {
-      //     ...state.days[dayOfWeek],
-      //     spots: state.days[dayOfWeek.spots] - 1
-      //   }
-      // ) : (
-      //   day = {
-      //     ...state.days[dayOfWeek],
-      //     spots: state.days[dayOfWeek.spots] - 1
-      //   }
-      // )
-      if (!state.appointments[id].interview) {
+      !state.appointments[id].interview ? (
         day = {
           ...state.days[dayOfWeek],
           spots: state.days[dayOfWeek].spots - 1
         }
-      } else {
+      ) : (
         day = {
           ...state.days[dayOfWeek],
-          spots: state.days[dayOfWeek.spots]
+          spots: state.days[dayOfWeek].spots
         }
-      }
+      )
 
       let days = state.days
       days[dayOfWeek] = day;
 
       return axios.put(`/api/appointments/${id}`, appointment)
-        .then(() => {
+        .then(res => {
           setState({
             ...state,
             appointments,
             days
           })
+          return res
         })
     },
     cancelInterview: (id) => {
