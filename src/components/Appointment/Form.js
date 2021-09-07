@@ -15,18 +15,14 @@ export default function Form(props) {
     setName("");
     setInterviewer(null);
   };
-  // const save = () => {
-  //   props.onSave(name, interviewer);
-  // }
+  const save = () => {
+    props.onSave(name, interviewer);
+  }
   const validate = () => {
     if (name === "") {
       setError("Student name cannot be blank");
       return;
     }
-    // if (interviewer === null) {
-    //   setError("Must select an interviewer");
-    //   return;
-    // }
     setError("");
     props.onSave(name, interviewer);
   };
@@ -56,6 +52,13 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button confirm onClick={validate}>
+          {/* // <Button confirm onClick={(() => { */}
+          {/* //   if (interviewer) { */}
+          {/* //     return save
+          //   } else {
+          //     return validate */}
+          {/* //   } */}
+          {/* // })}> */}
             Save
           </Button>
           <Button danger onClick={cancel}>
