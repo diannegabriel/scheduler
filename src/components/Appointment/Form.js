@@ -15,9 +15,6 @@ export default function Form(props) {
     setName("");
     setInterviewer(null);
   };
-  const save = () => {
-    props.onSave(name, interviewer);
-  }
   const validate = () => {
     if (name === "") {
       setError("Student name cannot be blank");
@@ -36,7 +33,7 @@ export default function Form(props) {
             type="text"
             placeholder="Enter Student Name"
             value={name}
-            onChange={event => {
+            onChange={(event) => {
               setName(event.target.value);
             }}
             data-testid="student-name-input"
@@ -52,13 +49,6 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button confirm onClick={validate}>
-          {/* // <Button confirm onClick={(() => { */}
-          {/* //   if (interviewer) { */}
-          {/* //     return save
-          //   } else {
-          //     return validate */}
-          {/* //   } */}
-          {/* // })}> */}
             Save
           </Button>
           <Button danger onClick={cancel}>

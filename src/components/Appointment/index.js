@@ -42,11 +42,10 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
-    if (!interviewer)  {
-      transition(ERROR_SAVE, true)
-      console.log("No interviewer")
-      return
-    };
+    if (!interviewer) {
+      transition(ERROR_SAVE, true);
+      return;
+    }
     transition(SAVE);
     props
       .bookInterview(props.id, interview)
