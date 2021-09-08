@@ -45,7 +45,7 @@ Oops! Was there a mistake? No worries. Simply click on the edit button on the bo
 !["Edit appointment"](https://github.com/diannegabriel/scheduler/blob/master/docs/03scheduler.gif)
 
 ## Cancel Appointment
-Don't need to speak to a mentor anymore? That's totally fine! Just click on the delete button on the bottom right side of your appointment. It will ask you to confirm because mentor help is 100% in demand.
+Don't need to speak to a mentor anymore? That's totally fine! Just click on the delete button on the bottom right side of your appointment. It will ask you to confirm because mentor help is 100% in demand so we need to be really sure.
 !["Cancel appointment"](https://github.com/diannegabriel/scheduler/blob/master/docs/04scheduler.gif)
 
 ### Errors
