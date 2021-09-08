@@ -9,6 +9,8 @@ export default function useApplicationData() {
     appointments: {},
     interviewers: [],
   });
+
+  // API data will be requested when page is rendered, controlled by useEffect
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -25,6 +27,7 @@ export default function useApplicationData() {
   }, []);
 
   const setDay = (day) => setState({ ...state, day });
+
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -34,6 +37,7 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment,
     };
+    // PUT request is used so we can update an appointment
     return axios.put(`/api/appointments/${id}`, appointment).then(() => {
       setState({
         ...state,
@@ -64,16 +68,25 @@ export default function useApplicationData() {
   const deleteInterview = () => {
     return null;
   };
+
+  // Finds the current day
   const findDay = getDay(state.day);
+
+  // updateSpots will indicate how many spots are left
   const updateSpots = (appointments) => {
+
+    // Finds the day the user selected
     const currentDay = state.days.find(
       (dayObject) => dayObject.name === state.day
     );
-    const spots =
-      5 -
-      currentDay.appointments.filter(
-        (appointment) => appointments[appointment].interview
+
+    // Counts the number of spots for that specific day
+    // 5 (original spots) minus appointments' length
+    const spots = 5 - currentDay.appointments.filter(
+      (appointment) => appointments[appointment].interview
       ).length;
+    
+    // Sets the updated array of days
     const days = [...state.days];
     days[findDay] = { ...days[findDay], spots };
     setState((prev) => ({ ...prev, days }));

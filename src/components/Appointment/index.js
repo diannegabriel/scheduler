@@ -23,10 +23,12 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+
   const confirm = () => {
     transition(CONFIRM);
     props.deleteInterview();
   };
+
   const deletes = () => {
     transition(DELETE, true);
     props
@@ -40,7 +42,7 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
-    // if there is no interviewer present, transition to ERROR_SAVE
+    // if there is no interviewer selected, transition to ERROR_SAVE
     if (!interviewer) {
       transition(ERROR_SAVE, true);
       return;
@@ -51,23 +53,22 @@ export default function Appointment(props) {
       .then(() => transition(SHOW))
       .catch(() => transition(ERROR_SAVE, true));
   };
-
   return (
     <article className="appointment">
       <Header time={props.time} />
+      {mode === CONFIRM && (
+        <Confirm
+          message="Are you sure you would like to delete?"
+          onConfirm={deletes}
+          onCancel={() => back()}
+        />
+      )}
       {mode === CREATE && (
         <Form
           onCancel={() => back()}
           interviewers={props.interviewers}
           onSave={save}
           onDelete={confirm}
-        />
-      )}
-      {mode === CONFIRM && (
-        <Confirm
-          message="Are you sure you would like to delete"
-          onConfirm={deletes}
-          onCancel={() => back()}
         />
       )}
       {mode === DELETE && <Status message="Deleting" />}
