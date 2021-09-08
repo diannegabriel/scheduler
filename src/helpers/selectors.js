@@ -1,3 +1,4 @@
+// Returns an array of all the appointments for the day
 export function getAppointmentsForDay(state, day) {
   const result = [];
   let appointmentArray = [];
@@ -12,6 +13,7 @@ export function getAppointmentsForDay(state, day) {
   return result;
 }
 
+// Returns an object with the interview, includes student and interviewer
 export function getInterview(state, interview) {
   for (const interviewer in state.interviewers) {
     if (!interview) {
@@ -30,6 +32,7 @@ export function getInterview(state, interview) {
   }
 }
 
+// Returns an array with all the interviewers assigned for that day
 export function getInterviewersForDay(state, day) {
   const result = [];
   let interviewArray = [];
@@ -47,6 +50,7 @@ export function getInterviewersForDay(state, day) {
   return result;
 }
 
+// Returns an integer as the id of that specific day
 export function getDay(day) {
   const dayID = {
     Monday: 0,

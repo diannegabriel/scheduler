@@ -42,6 +42,7 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
+    
     // if there is no interviewer selected, transition to ERROR_SAVE
     if (!interviewer) {
       transition(ERROR_SAVE, true);

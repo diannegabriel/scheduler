@@ -3,6 +3,7 @@ import axios from "axios";
 import { getDay } from "helpers/selectors";
 
 export default function useApplicationData() {
+  // Default state. When page first renders it will always land on Monday
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -37,6 +38,7 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment,
     };
+
     // PUT request is used so we can update an appointment
     return axios.put(`/api/appointments/${id}`, appointment).then(() => {
       setState({
@@ -69,23 +71,22 @@ export default function useApplicationData() {
     return null;
   };
 
-  // Finds the current day
-  const findDay = getDay(state.day);
-
   // updateSpots will indicate how many spots are left
   const updateSpots = (appointments) => {
-
     // Finds the day the user selected
     const currentDay = state.days.find(
       (dayObject) => dayObject.name === state.day
-    );
-
+      );
+      
     // Counts the number of spots for that specific day
     // 5 (original spots) minus appointments' length
     const spots = 5 - currentDay.appointments.filter(
       (appointment) => appointments[appointment].interview
       ).length;
-    
+        
+    // Finds the current day
+    const findDay = getDay(state.day);
+
     // Sets the updated array of days
     const days = [...state.days];
     days[findDay] = { ...days[findDay], spots };
