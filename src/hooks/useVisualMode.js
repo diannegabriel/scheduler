@@ -1,15 +1,19 @@
 import { useState } from "react";
 
+// useVisualMode() sets the transition for all Appointment components
 export default function useVisualMode(inMode) {
   const [mode, setMode] = useState(inMode);
   const [history, setHistory] = useState([inMode]);
 
+  // transition helps the app move on to the next component with ease
   const transition = (newMode, replace = false) => {
     setMode(newMode);
     replace
       ? setHistory([...history.slice(0, -1), newMode])
       : setHistory((prev) => [...prev, newMode]);
   };
+
+  // back shows the previous component, mainly used when user clicks cancel or close
   const back = () => {
     if (!(mode === inMode)) {
       const lastIndex = history.slice(0, -1).length - 1;
@@ -18,8 +22,8 @@ export default function useVisualMode(inMode) {
     }
   };
   return {
-    mode,
-    transition,
-    back,
+    mode, // the current component
+    transition, // the next component
+    back, // the previous component
   };
 }

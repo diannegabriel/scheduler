@@ -23,12 +23,10 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-
   const confirm = () => {
     transition(CONFIRM);
     props.deleteInterview();
   };
-
   const deletes = () => {
     transition(DELETE, true);
     props
@@ -42,6 +40,7 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
+    // if there is no interviewer present, transition to ERROR_SAVE
     if (!interviewer) {
       transition(ERROR_SAVE, true);
       return;
