@@ -37,7 +37,7 @@ npm run storybook
 ## Features
 
 ### Make Appointment
-Making an appointment is easy-peasy! Simply click on the + sign in an empty timeslot, and a form should pop up. Enter your name and select your mentor then save. Just like that!
+Making an appointment is easy-peasy! Simply click the + sign on an empty timeslot, and a form should pop up. Enter your name and select your mentor then save. Just like that!
 !["Make appointment"](https://github.com/diannegabriel/scheduler/blob/master/docs/02scheduler.gif)
 
 ## Edit Appointment
