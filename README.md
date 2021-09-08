@@ -2,16 +2,19 @@
 
 Tired of being in the mentor queue for several minutes? Afraid when Rudder glitches out and cancels your mentor request? We have a solution for that: the Interview Scheduler app! This is a single-page app, built with React.js, that makes the students in control of their appointments.
 
+!["Scheduler"](https://github.com/diannegabriel/scheduler/blob/master/docs/01scheduler.gif)
+
 ## Dependencies
 
-Front-End: HTML, JavaScript, React, JSX, SASS, Axios
-Back-End: Node, PostgreSQL
+Front-End: HTML, JavaScript, React, JSX, SASS, Axios\
+Back-End: Node, PostgreSQL\
 Testing: Storybook, JEST, Cypress
 
 ## Setup
 
-Install dependencies with `npm install`.\
-To get the database running, head to `https://github.com/lighthouse-labs/scheduler-api`
+1. Install dependencies with `npm install`.
+2. To get the database running, head to `https://github.com/lighthouse-labs/scheduler-api`
+3. Tune into <http://localhost:8080/> in your browser and organize your appointments!
 
 ## Running Webpack Development Server
 
@@ -33,72 +36,13 @@ npm run storybook
 
 ## Features
 
+### Make Appointment
+Making an appointment is easy-peasy! Simply click on the + sign in an empty timeslot, and a form should pop up. Enter your name and select your mentor then save. Just like that!
+!["Toggle form"](https://github.com/diannegabriel/tweeter/blob/master/docs/toggle_compose.gif)
 
+## Edit Appointment
 
-## Tree File Path
+## Cancel Appointment
 
-```bash
-.
-├── README.md
-├── coverage
-├── cypress 
-│   ├── downloads
-│   ├── fixtures
-│   ├── integration
-│   │   ├── 1-getting-started
-│   │   ├── 2-advanced-examples
-│   │   ├── appointments.spec.js
-│   │   └── navigation.spec.js
-│   ├── plugins
-│   └── support
-├── cypress.json
-├── jsconfig.json
-├── node_modules
-├── package-lock.json
-├── package.json
-├── public
-├── src
-│   ├── components
-│   │   ├── Application.js
-│   │   ├── Application.scss
-│   │   ├── Appointment
-│   │   │   ├── Confirm.js
-│   │   │   ├── Empty.js
-│   │   │   ├── Error.js
-│   │   │   ├── Form.js
-│   │   │   ├── Header.js
-│   │   │   ├── Show.js
-│   │   │   ├── Status.js
-│   │   │   ├── index.js
-│   │   │   └── styles.scss
-│   │   ├── Button.js
-│   │   ├── Button.scss
-│   │   ├── DayList.js
-│   │   ├── DayListItem.js
-│   │   ├── DayListItem.scss
-│   │   ├── InterviewerList.js
-│   │   ├── InterviewerList.scss
-│   │   ├── InterviewerListItem.js
-│   │   ├── InterviewerListItem.scss
-│   │   └── __tests__
-│   │       ├── Application.test.js
-│   │       ├── Appointment.test.js
-│   │       ├── Button.test.js
-│   │       ├── DayListItem.test.js
-│   │       └── Form.test.js
-│   ├── helpers
-│   │   ├── selectors.js
-│   │   └── selectors.test.js
-│   ├── hooks
-│   │   ├── __tests__
-│   │   │   └── useVisualMode.test.js
-│   │   ├── useApplicationData.js
-│   │   └── useVisualMode.js
-│   ├── index.js
-│   ├── index.scss
-│   ├── setupTests.js
-│   └── styles
-├── stories
-│   └── index.js
-└── yarn.lock
-```
+### Errors
+
