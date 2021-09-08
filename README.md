@@ -49,4 +49,10 @@ Don't need to speak to a mentor anymore? That's totally fine! Just click on the 
 !["Cancel appointment"](https://github.com/diannegabriel/scheduler/blob/master/docs/04scheduler.gif)
 
 ### Errors
+If you don't enter a name or select an interviewer, Scheduler will not allow you to save that. Also, if something goes wrong with deleting an appointment, you will be met with an error as well.
+!["Error - Save"](https://github.com/diannegabriel/scheduler/blob/master/docs/05scheduler.gif)
+!["Error - Delete"](https://github.com/diannegabriel/scheduler/blob/master/docs/06-02scheduler.gif)
 
+### Full Slots
+We will let you know when spots are all full. Just try again for another day :)
+!["Full slots"](https://github.com/diannegabriel/scheduler/blob/master/docs/07scheduler.gif)
