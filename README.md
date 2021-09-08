@@ -38,11 +38,15 @@ npm run storybook
 
 ### Make Appointment
 Making an appointment is easy-peasy! Simply click on the + sign in an empty timeslot, and a form should pop up. Enter your name and select your mentor then save. Just like that!
-!["Toggle form"](https://github.com/diannegabriel/tweeter/blob/master/docs/toggle_compose.gif)
+!["Make appointment"](https://github.com/diannegabriel/scheduler/blob/master/docs/02scheduler.gif)
 
 ## Edit Appointment
+Oops! Was there a mistake? No worries. Simply click on the edit button on the bottom right side of your appointment. A form will let you edit your appointment.
+!["Edit appointment"](https://github.com/diannegabriel/scheduler/blob/master/docs/03scheduler.gif)
 
 ## Cancel Appointment
+Don't need to speak to a mentor anymore? That's totally fine! Just click on the delete button on the bottom right side of your appointment. It will ask you to confirm because mentor help is 100% in demand.
+!["Cancel appointment"](https://github.com/diannegabriel/scheduler/blob/master/docs/04scheduler.gif)
 
 ### Errors
 
