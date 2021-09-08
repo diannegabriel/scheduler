@@ -1,8 +1,17 @@
 # Interview Scheduler
 
+Tired of being in the mentor queue for several minutes? Afraid when Rudder glitches out and cancels your mentor request? We have a solution for that: the Interview Scheduler app! This is a single-page app, built with React.js, that makes the students in control of their appointments.
+
+## Dependencies
+
+Front-End: HTML, JavaScript, React, JSX, SASS, Axios
+Back-End: Node, PostgreSQL
+Testing: Storybook, JEST, Cypress
+
 ## Setup
 
-Install dependencies with `npm install`.
+Install dependencies with `npm install`.\
+To get the database running, head to `https://github.com/lighthouse-labs/scheduler-api`
 
 ## Running Webpack Development Server
 
@@ -21,6 +30,10 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Features
+
+
 
 ## Tree File Path
 
